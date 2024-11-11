@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-public class OrderNow {
+public class OrderRow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,12 @@ public class OrderNow {
     private OrderStatus orderStatus;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    private CatalogueProduct catalogueProduct;
+
+    @ManyToOne
     private Order order;
 
-    @OneToMany(mappedBy = "orderNow", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderRow", cascade = CascadeType.ALL)
     private List<Item> items;
 
 

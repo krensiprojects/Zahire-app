@@ -18,12 +18,10 @@ public class Item {
     private int iotNumber;
 
     @ManyToOne
-    @JoinColumn(name = "order_now_id")
-    private OrderNow orderNow;
+    private OrderRow orderRow;
 
     @ManyToOne
-    @JoinColumn(name = "catalog_product_id")
-    private CatalogueProduct catalogProduct;
+    private CatalogueProduct catalogueProduct;
 
 
 

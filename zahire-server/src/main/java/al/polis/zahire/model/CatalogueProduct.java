@@ -22,10 +22,10 @@ public class CatalogueProduct {
     @JoinColumn(name = "user_producer_id")
     private UserProducer producer;
 
-    @OneToMany(mappedBy = "catalogProduct", cascade = CascadeType.ALL)
-    private List<OrderNow> orders;
+    @OneToMany(mappedBy = "catalogueProduct", cascade = CascadeType.ALL)
+    private List<OrderRow> orders;
 
-    @OneToMany(mappedBy = "catalogProduct", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "catalogueProduct", cascade = CascadeType.ALL)
     private List<Item> items;
 
 }

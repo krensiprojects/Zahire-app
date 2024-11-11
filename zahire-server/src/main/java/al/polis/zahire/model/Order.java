@@ -16,11 +16,10 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
     private UserCustomer customer;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderNow> orderNowItems;
+    private List<OrderRow> orderRowItems;
 
 
 }
