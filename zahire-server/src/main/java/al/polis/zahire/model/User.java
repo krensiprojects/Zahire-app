@@ -1,4 +1,4 @@
-package model;
+package al.polis.zahire.model;
 
 
 import jakarta.persistence.*;
@@ -17,5 +17,5 @@ public class User {
     private boolean enabled;
     private boolean active;
 
-    // Getters, setters, constructors, etc.
+
 }

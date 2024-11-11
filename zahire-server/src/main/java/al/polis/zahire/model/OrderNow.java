@@ -1,10 +1,13 @@
-package model;
+package al.polis.zahire.model;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
+@Data
 @Entity
 public class OrderNow {
 
@@ -24,5 +27,5 @@ public class OrderNow {
     @OneToMany(mappedBy = "orderNow", cascade = CascadeType.ALL)
     private List<Item> items;
 
-    // Getters and setters
+
 }

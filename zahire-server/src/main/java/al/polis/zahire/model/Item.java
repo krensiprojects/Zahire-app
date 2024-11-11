@@ -1,8 +1,12 @@
-package model;
+package al.polis.zahire.model;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Data
 @Entity
 public class Item {
 
@@ -22,5 +26,5 @@ public class Item {
     private CatalogueProduct catalogProduct;
 
 
-    // Getters and setters
+
 }

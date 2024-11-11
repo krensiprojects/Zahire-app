@@ -1,9 +1,12 @@
-package model;
+package al.polis.zahire.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
+@Data
 @Entity
 public class CatalogueProduct {
 
@@ -25,5 +28,4 @@ public class CatalogueProduct {
     @OneToMany(mappedBy = "catalogProduct", cascade = CascadeType.ALL)
     private List<Item> items;
 
-    // Getters and setters
 }

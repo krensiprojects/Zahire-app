@@ -1,9 +1,12 @@
-package model;
+package al.polis.zahire.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
+@Data
 @Entity
 public class UserCustomer extends User{
 
@@ -11,13 +14,5 @@ public class UserCustomer extends User{
     private List<Order> orders;
 
 
-    // Getters and setters
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
 }
