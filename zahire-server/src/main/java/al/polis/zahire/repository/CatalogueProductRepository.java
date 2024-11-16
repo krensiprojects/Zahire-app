@@ -10,5 +10,5 @@ import java.util.List;
 public interface CatalogueProductRepository extends JpaRepository<CatalogueProduct, Long> {
 
     // Search by code
-    List<CatalogueProduct> findByCodeContainingIgnoreCase(String searchCriterion);
+    List<CatalogueProduct> findByDescriptionContainingIgnoreCase(String searchCriterion);
 }
