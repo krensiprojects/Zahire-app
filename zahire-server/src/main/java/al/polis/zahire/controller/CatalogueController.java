@@ -1,0 +1,34 @@
+package al.polis.zahire.controller;
+
+
+import al.polis.zahire.dto.InsertProductDto;
+import al.polis.zahire.dto.ProductSearchReqDto;
+import al.polis.zahire.dto.ProductSearchRespDto;
+import al.polis.zahire.service.CatalogueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/catalogue")
+public class CatalogueController {
+
+    @Autowired
+    private CatalogueService catalogueService;
+
+    // Endpoint to search in the catalogue
+    @PostMapping("/searchInCatalogue")
+    public List<ProductSearchRespDto> searchInCatalogue(@RequestBody ProductSearchReqDto searchCriterion) {
+        return catalogueService.searchInCatalogue(searchCriterion);
+    }
+
+    // Endpoint to insert a new product
+    @PostMapping("/insertProduct")
+    public void insertProduct(@RequestBody InsertProductDto product) {
+        catalogueService.insertNewProduct(product);
+    }
+}

@@ -14,9 +14,13 @@ public class CatalogueProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String productName;
+    private String code; // For search, this can be used
     private String description;
+    private String shortDescription; // If this is part of your DTO
     private double price;
+    private Integer minimumQty;
+    private Integer packageSize;
+    private double packageWeight;
 
     @ManyToOne
     @JoinColumn(name = "user_producer_id")
