@@ -20,7 +20,8 @@ public class CatalogueServiceImpl implements CatalogueService {
     @Override
     public List<ProductSearchRespDto> searchInCatalogue(ProductSearchReqDto request) {
         // Use the repository to find products by search criterion (code)
-        List<CatalogueProduct> products = catalogueProductRepository.findByCodeContainingIgnoreCase(request.getSearchCriterion());
+        List<CatalogueProduct> products = catalogueProductRepository
+                .findByDescriptionContainsIgnoreCase(request.getSearchCriterion());
 
         // Convert the results to ProductSearchRespDto
         return products.stream()
