@@ -11,4 +11,6 @@ public interface CatalogueService {
     List<ProductSearchRespDto> searchInCatalogue(ProductSearchReqDto searchCriterion);
 
     void insertNewProduct(InsertProductDto insertProductDto);
+
+    double sumTwoNumbers(double a, double b);
 }

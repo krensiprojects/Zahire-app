@@ -43,4 +43,9 @@ public class CatalogueServiceImpl implements CatalogueService {
         // Save the product to the repository
         catalogueProductRepository.save(catalogueProduct);
     }
+
+    @Override
+    public double sumTwoNumbers(double a, double b) {
+        return a+b;
+    }
 }
