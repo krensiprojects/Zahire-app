@@ -1,0 +1,9 @@
+tocTab[tocTab.length] = new Array("0.3.1:1", "", "Orders Life Cycle", "EARoot/EA3/EA1/EA42.htm", "183.png", "8", "0", "", "Statechart diagram0","{3B99733F-602D-4fa8-BCEB-C8C6DAE69748}");
+tocTab[tocTab.length] = new Array("0.3.1:2", "", "Delivered", "EARoot/EA3/EA1/EA45.htm", "20.png", "E51", "0", "", "State0","{762158DE-A9B6-4e05-87F1-C1521150B426}");
+tocTab[tocTab.length] = new Array("0.3.1:3", "", "Final", "EARoot/EA3/EA1/EA46.htm", "69.png", "E53", "0", "", "StateNode0","{16CF02A9-54E2-4784-9F2A-E1C843AB399A}");
+tocTab[tocTab.length] = new Array("0.3.1:4", "", "Initial", "EARoot/EA3/EA1/EA47.htm", "68.png", "E46", "0", "", "StateNode0","{B0683B1B-C398-4d36-BB60-539736E750A1}");
+tocTab[tocTab.length] = new Array("0.3.1:5", "", "Paid", "EARoot/EA3/EA1/EA48.htm", "20.png", "E48", "0", "", "State0","{C16BFA71-3746-47b7-A551-9D56B3CCE53E}");
+tocTab[tocTab.length] = new Array("0.3.1:6", "", "Ready", "EARoot/EA3/EA1/EA49.htm", "20.png", "E52", "0", "", "State0","{67E1DE3A-B3FA-474a-AA53-DC00AF3A7BD0}");
+tocTab[tocTab.length] = new Array("0.3.1:7", "", "Terminate", "EARoot/EA3/EA1/EA50.htm", "98.png", "E49", "0", "", "StateNode0","{439C0791-0E6C-45f2-AFBC-A0C6B1E245ED}");
+tocTab[tocTab.length] = new Array("0.3.1:8", "", "To be paid", "EARoot/EA3/EA1/EA51.htm", "20.png", "E47", "0", "", "State0","{22C768D3-B59B-4ccb-9905-FAD0DB96DA9B}");
+tocTab[tocTab.length] = new Array("0.3.1:9", "", "To be prepared", "EARoot/EA3/EA1/EA52.htm", "20.png", "E50", "0", "", "State0","{B4E636D9-F58D-4c75-AA48-0F6DE49B0000}");

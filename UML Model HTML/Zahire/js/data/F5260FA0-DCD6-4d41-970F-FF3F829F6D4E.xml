@@ -1,0 +1,16 @@
+tocTab[tocTab.length] = new Array("0.5.2:1", "", "Front-end", "EARoot/EA5/EA2/EA119.htm", "180.png", "2", "0", "", "Use Case diagram0","{86C13CC6-7E1B-4c47-ADE0-AD48FA09E879}");
+tocTab[tocTab.length] = new Array("0.5.2:2", "", "Add to cart", "EARoot/EA5/EA2/EA122.htm", "7.png", "E21", "0", "", "UseCase0","{7D1B635C-39CD-4b29-BDC0-66BD0264B4CD}");
+tocTab[tocTab.length] = new Array("0.5.2:3", "", "Albanian", "EARoot/EA5/EA2/EA123.htm", "6.png", "E5", "0", "", "Actor0","{C5FD37B8-DD2A-460f-8514-5FBA9A35E630}");
+tocTab[tocTab.length] = new Array("0.5.2:4", "", "Book for the future", "EARoot/EA5/EA2/EA124.htm", "7.png", "E27", "0", "", "UseCase0","{C7655F35-0923-4f48-8DD7-0763A2AEC08C}");
+tocTab[tocTab.length] = new Array("0.5.2:5", "", "Buy for now", "EARoot/EA5/EA2/EA125.htm", "7.png", "E26", "0", "", "UseCase0","{F3442CAC-EC5E-4416-B2FF-D0FA88E54FFD}");
+tocTab[tocTab.length] = new Array("0.5.2:6", "", "Change quantity", "EARoot/EA5/EA2/EA126.htm", "7.png", "E25", "0", "", "UseCase0","{9B98BA0F-EBAD-4668-BED6-AFE74517D3C6}");
+tocTab[tocTab.length] = new Array("0.5.2:7", "", "Checkout", "EARoot/EA5/EA2/EA127.htm", "7.png", "E23", "0", "", "UseCase0","{D9DAD914-4336-44ac-B41A-4B00C2E4C5E5}");
+tocTab[tocTab.length] = new Array("0.5.2:8", "", "Customer", "EARoot/EA5/EA2/EA128.htm", "6.png", "E3", "0", "", "Actor0","{FA365929-86E5-4dc4-8CC6-6CDC41AA39D5}");
+tocTab[tocTab.length] = new Array("0.5.2:9", "", "Manage the  Wish List", "EARoot/EA5/EA2/EA129.htm", "7.png", "E110", "0", "", "UseCase0","{DC2CCB05-57BC-47e8-8E49-771554D34B58}");
+tocTab[tocTab.length] = new Array("0.5.2:10", "", "Pay", "EARoot/EA5/EA2/EA130.htm", "7.png", "E28", "0", "", "UseCase0","{05BCC1B0-1964-46e5-9FA9-817BC4A35B1F}");
+tocTab[tocTab.length] = new Array("0.5.2:11", "", "Remove", "EARoot/EA5/EA2/EA131.htm", "7.png", "E111", "0", "", "UseCase0","{A8847417-1F07-41e5-A379-8A03718AEEAC}");
+tocTab[tocTab.length] = new Array("0.5.2:12", "", "Remove item", "EARoot/EA5/EA2/EA132.htm", "7.png", "E24", "0", "", "UseCase0","{79D5ECA3-B2FC-45fc-9913-6A623FBCA588}");
+tocTab[tocTab.length] = new Array("0.5.2:13", "", "Search in Catalogue", "EARoot/EA5/EA2/EA133.htm", "7.png", "E20", "0", "", "UseCase0","{79AC7D56-94B0-4aca-AEB7-6B9007C84364}");
+tocTab[tocTab.length] = new Array("0.5.2:14", "", "Show Details", "EARoot/EA5/EA2/EA134.htm", "7.png", "E162", "0", "", "UseCase0","{E0096695-E232-4507-8D80-591C91A62629}");
+tocTab[tocTab.length] = new Array("0.5.2:15", "", "Tourist", "EARoot/EA5/EA2/EA135.htm", "6.png", "E4", "0", "", "Actor0","{89E53155-C78B-4097-BCD8-FCA4B24123A7}");
+tocTab[tocTab.length] = new Array("0.5.2:16", "", "View Cart", "EARoot/EA5/EA2/EA136.htm", "7.png", "E22", "0", "", "UseCase0","{649EC374-0ED6-47ad-BB00-73A65E6438B4}");

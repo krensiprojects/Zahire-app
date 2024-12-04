@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.5.1.1:1", "", "Catalogue", "EARoot/EA5/EA1/EA1/EA75.htm", "180.png", "4", "0", "", "Use Case diagram0","{28F0D6A4-4D64-40f1-B5A4-0C2961E03DD9}");
+tocTab[tocTab.length] = new Array("0.5.1.1:2", "", "Add new Product", "EARoot/EA5/EA1/EA1/EA78.htm", "7.png", "E14", "0", "", "UseCase0","{14D23D63-BD63-478b-9040-9F5249E2DCDF}");
+tocTab[tocTab.length] = new Array("0.5.1.1:3", "", "Delete Product", "EARoot/EA5/EA1/EA1/EA79.htm", "7.png", "E15", "0", "", "UseCase0","{6E4567DE-5B96-40ec-A4A0-1E723A5C8B90}");
+tocTab[tocTab.length] = new Array("0.5.1.1:4", "", "Edit Product", "EARoot/EA5/EA1/EA1/EA80.htm", "7.png", "E16", "0", "", "UseCase0","{A6E1EF69-9343-4274-8578-8CBF6BDD4E39}");
+tocTab[tocTab.length] = new Array("0.5.1.1:5", "", "Load quantity", "EARoot/EA5/EA1/EA1/EA81.htm", "7.png", "E18", "0", "", "UseCase0","{DA836AA9-DF05-41a1-8E16-04BB2716DA06}");
+tocTab[tocTab.length] = new Array("0.5.1.1:6", "", "Manage Stock", "EARoot/EA5/EA1/EA1/EA82.htm", "7.png", "E17", "0", "", "UseCase0","{3B8F9188-E44D-4ab6-B866-5678BB81FA9E}");
+tocTab[tocTab.length] = new Array("0.5.1.1:7", "", "Search in Catalog", "EARoot/EA5/EA1/EA1/EA83.htm", "7.png", "E13", "0", "", "UseCase0","{E7B5CFE2-4169-4d98-911C-6FF62F47C972}");
+tocTab[tocTab.length] = new Array("0.5.1.1:8", "", "Unload quantity", "EARoot/EA5/EA1/EA1/EA85.htm", "7.png", "E19", "0", "", "UseCase0","{0BBAF88A-551A-4320-8779-12AB1A47A35B}");
