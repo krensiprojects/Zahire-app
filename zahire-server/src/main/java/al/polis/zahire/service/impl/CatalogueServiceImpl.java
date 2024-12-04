@@ -3,6 +3,7 @@ package al.polis.zahire.service.impl;
 import al.polis.zahire.dto.InsertProductDto;
 import al.polis.zahire.dto.ProductSearchReqDto;
 import al.polis.zahire.dto.ProductSearchRespDto;
+import al.polis.zahire.mapper.CatalogProductMapper;
 import al.polis.zahire.model.CatalogueProduct;
 import al.polis.zahire.repository.CatalogueProductRepository;
 import al.polis.zahire.service.CatalogueService;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 public class CatalogueServiceImpl implements CatalogueService {
     @Autowired
     private CatalogueProductRepository catalogueProductRepository;
+    @Autowired
+    private CatalogProductMapper catalogProductMapper;
 
     @Override
     public List<ProductSearchRespDto> searchInCatalogue(ProductSearchReqDto request) {
@@ -32,13 +35,7 @@ public class CatalogueServiceImpl implements CatalogueService {
     @Override
     public void insertNewProduct(InsertProductDto product) {
         // Convert InsertProductDto to CatalogueProduct
-        CatalogueProduct catalogueProduct = new CatalogueProduct();
-        catalogueProduct.setCode(product.getCode());
-        catalogueProduct.setDescription(product.getDescription());
-        catalogueProduct.setPrice(product.getPrice());
-        catalogueProduct.setMinimumQty(product.getMinimumQty());
-        catalogueProduct.setPackageSize(product.getPackageSize());
-        catalogueProduct.setPackageWeight(product.getPackageWeight());
+        CatalogueProduct catalogueProduct = catalogProductMapper.fromInsertProductDto(product);
 
         // Save the product to the repository
         catalogueProductRepository.save(catalogueProduct);
