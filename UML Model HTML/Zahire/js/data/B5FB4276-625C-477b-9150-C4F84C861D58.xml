@@ -2,5 +2,5 @@ tocTab[tocTab.length] = new Array("0.1", "1", "Architecture", "EARoot/EA1/EA3.ht
 tocTab[tocTab.length] = new Array("0.2", "1", "Concepts", "EARoot/EA2/EA15.htm", "31.png", "", "", "{EAFB448D-D6BB-49e1-AC66-6C9C557A3607}", "Package");
 tocTab[tocTab.length] = new Array("0.3", "1", "Life cycles", "EARoot/EA3/EA40.htm", "31.png", "", "", "{02CEB664-D0CE-48ec-B29F-9A86BCD0A46F}", "Package");
 tocTab[tocTab.length] = new Array("0.4", "1", "RESTful services", "EARoot/EA4/EA55.htm", "31.png", "", "", "{3E72F5FF-544A-4e8a-9578-3D5659BD8833}", "Package");
-tocTab[tocTab.length] = new Array("0.5", "1", "Use Cases", "EARoot/EA5/EA66.htm", "31.png", "", "", "{DB81C09A-AC60-46ce-9921-00A2E7292AB8}", "Package");
-tocTab[tocTab.length] = new Array("0.6", "1", "User Interfaces", "EARoot/EA6/EA139.htm", "31.png", "", "", "{B9E64144-B3C3-47c4-95F1-B8A1DC28E2A4}", "Package");
+tocTab[tocTab.length] = new Array("0.5", "1", "Use Cases", "EARoot/EA5/EA92.htm", "31.png", "", "", "{DB81C09A-AC60-46ce-9921-00A2E7292AB8}", "Package");
+tocTab[tocTab.length] = new Array("0.6", "1", "User Interfaces", "EARoot/EA6/EA165.htm", "31.png", "", "", "{B9E64144-B3C3-47c4-95F1-B8A1DC28E2A4}", "Package");
