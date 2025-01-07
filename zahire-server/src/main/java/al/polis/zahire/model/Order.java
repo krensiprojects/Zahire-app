@@ -15,6 +15,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
     @ManyToOne
     private UserCustomer customer;
 
