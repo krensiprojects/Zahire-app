@@ -1,5 +1,8 @@
 package al.polis.zahire.dto;
 
+import lombok.Data;
+
+@Data
 public class CalculationResponseDto {
     private double sum;
     private double product;
@@ -12,16 +15,4 @@ public class CalculationResponseDto {
         this.division=division;
     }
 
-    //Getters for each result
-    public double getSum(){
-        return sum;
-    }
-
-    public double getProduct() {
-        return product;
-    }
-
-    public double getDivision() {
-        return division;
-    }
 }
