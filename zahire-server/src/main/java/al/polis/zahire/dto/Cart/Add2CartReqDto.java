@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class Add2CartReqDto {
     private Long productId;
+    private Long cartId;
 }

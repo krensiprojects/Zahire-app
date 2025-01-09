@@ -23,7 +23,7 @@ public class Order {
     private UserCustomer customer;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderRow> orderRowItems;
+    private List<OrderRow> orderRows;
 
 
 }
