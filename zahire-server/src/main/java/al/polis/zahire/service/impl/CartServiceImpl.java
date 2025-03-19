@@ -102,11 +102,53 @@ public class CartServiceImpl implements CartService {
         responseDto.setMessage("Product has been added to the cart");
         responseDto.setNumOrdered(1);
         return responseDto;
-    }
 
+
+    }
     @Override
     public ChangeCartQtyResDto increaseCartQty(ChangeCartQtyReqDto requestDto) {
-        return null;
+        ChangeCartQtyResDto responseDto = new ChangeCartQtyResDto();
+
+        // Extract cartId, productId, and quantity from the request DTO
+        Long cartId = requestDto.getCartId();
+        Long productId = requestDto.getProductId();
+        int increaseBy = requestDto.getQtyChange(); // Quantity to increase (e.g., 1)
+
+        if (cartId == null || productId == null || increaseBy <= 0) {
+            responseDto.setMessage("Invalid request parameters");
+            return responseDto;
+        }
+
+        // Fetch the order (cart) from the database using cartId
+        Order order = orderRepository.findById(cartId).orElse(null);
+        if (order == null) {
+            responseDto.setMessage("Cart not found");
+            return responseDto;
+        }
+
+        // Find the OrderRow for the given productId in the cart
+        List<OrderRow> orderRows = order.getOrderRows();
+        OrderRow orderRow = orderRows.stream()
+                .filter(row -> row.getCatalogueProduct().getId().equals(productId))
+                .findFirst()
+                .orElse(null);
+
+        if (orderRow == null) {
+            responseDto.setMessage("Product not found in the cart");
+            return responseDto;
+        }
+
+        // Increase the quantity of the product in the cart
+        int updatedQuantity = orderRow.getQuantity() + increaseBy;
+        orderRow.setQuantity(updatedQuantity);
+
+        // Save the updated OrderRow back to the database
+        orderNowRepository.save(orderRow);
+
+        // Return the updated quantity in the response
+        responseDto.setMessage("Product quantity increased successfully");
+        responseDto.setNewQuantity(updatedQuantity);
+        return responseDto;
     }
 
     @Override
@@ -134,3 +176,4 @@ public class CartServiceImpl implements CartService {
         return null;
     }
 }
+

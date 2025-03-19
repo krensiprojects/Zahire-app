@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @NoArgsConstructor
 @Data
@@ -26,4 +27,16 @@ public class Order {
     private List<OrderRow> orderRows;
 
 
+    private LocalDateTime date;
+    private boolean shipped; // Indicates if the order has been shipped
+    private int quantity;
+    private double total;
+    private String currency;
+    private LocalDateTime shipDate;
+
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
+    private String paymentMethod;
+    private LocalDateTime estimatedDelivery;
+    private String trackingNumber;
 }

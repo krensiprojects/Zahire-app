@@ -27,6 +27,8 @@ public class CatalogueController {
     // Endpoint to insert a new product
     @PostMapping("/insertProduct")
     public void insertProduct(@RequestBody InsertProductDto product) {
-                catalogueService.insertNewProduct(product);
+
+        catalogueService.insertNewProduct(product);
+
     }
 }

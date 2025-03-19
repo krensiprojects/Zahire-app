@@ -22,6 +22,22 @@ public class CatalogueProduct {
     private Integer packageSize;
     private double packageWeight;
 
+    private String link; // URL for product details
+    private String titleDescription; // More detailed title if needed
+
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status; // Enum for product availability
+
+    private String mainCategory;
+    private String subCategory;
+
+    private String dimension;
+    private Integer stockQuantity; // Number of available items
+
+    private String imageUrl; // URL of product image
+    private String videoUrl; // URL of product video (if applicable)
+
+
     @ManyToOne
     @JoinColumn(name = "user_producer_id")
     private UserProducer producer;

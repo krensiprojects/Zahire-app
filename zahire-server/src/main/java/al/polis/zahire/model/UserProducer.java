@@ -13,5 +13,10 @@ public class UserProducer extends User{
     @OneToMany(mappedBy = "producer", cascade = CascadeType.ALL)
     private List<CatalogueProduct> catalogProducts;
 
+    private String country;
+    private String address;
+    private String farmName;
+    private String description;
+    private String businessRegistrationNumber;
 
 }
