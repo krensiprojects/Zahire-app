@@ -5,6 +5,7 @@ import lombok.Data;
 import java.time.LocalDate;
 @Data
 public class BookProdReqDto {
+    private Long cartId;
     private Long productId;
     private Integer quantity;
     private LocalDate deliveryDate;

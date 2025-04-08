@@ -17,9 +17,10 @@ public interface CartService {
 
     GetOrderTotalsResDto getOrderTotals(GetOrderTotalsReqDto requestDto);
 
-    /*
-        Order addProductToCart(Add2CartReqDto requestDto); // Update order with new product
-        ChangeCartQtyResDto changeProductQuantity(ChangeCartQtyReqDto requestDto); // Update quantity of product in cart
-        Order checkoutOrder(Long orderId); // Change order status from CART to WAITING4PAYMENT (or further) */
+    Add2CartResDto decreaseCartQty(Add2CartReqDto requestDto);
+
+    GetOrderTotalsResDto getOrderTotals(Long cartId);
+
+    
 
 }
