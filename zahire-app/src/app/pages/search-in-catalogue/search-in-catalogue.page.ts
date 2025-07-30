@@ -36,4 +36,12 @@ export class SearchInCataloguePage {
       this.filteredProducts = pa;
     });
   }
+
+  addNewProduct(){
+    // hardcode the product to be added
+    let p = new ProductDto(...);
+
+    // send to the insertProduct REST service
+    ...
+  }
 }
