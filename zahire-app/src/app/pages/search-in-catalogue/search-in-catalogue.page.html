@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search Catalogue</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input [(ngModel)]="searchTerm" placeholder="Search product"></ion-input>
+    <ion-button color="success" (click)="onSearch()">Search</ion-button>
+  </ion-item>
+
+  <ion-button expand="block" color="warning">Add New Product</ion-button>
+
+  <ion-list *ngIf="filteredProducts.length > 0">
+    <ion-item *ngFor="let product of filteredProducts">
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }} - Stock: {{ product.stock }}</p>
+      </ion-label>
+      <ion-button fill="clear" slot="end" color="medium">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" slot="end" color="danger">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

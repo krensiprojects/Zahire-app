@@ -21,6 +21,6 @@ public interface CartService {
 
     GetOrderTotalsResDto getOrderTotals(Long cartId);
 
-    
+
 
 }
