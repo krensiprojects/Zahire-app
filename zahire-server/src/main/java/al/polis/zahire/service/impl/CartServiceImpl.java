@@ -157,8 +157,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Add2CartResDto decreaseCartQty(Add2CartReqDto requestDto) {
-        Add2CartResDto responseDto = new Add2CartResDto();
+    public ChangeCartQtyResDto decreaseCartQty(ChangeCartQtyReqDto requestDto) {
+        ChangeCartQtyResDto responseDto = new ChangeCartQtyResDto();
 
         // Step 1: Validate request
         if (requestDto == null || requestDto.getCartId() == null || requestDto.getProductId() == null) {
@@ -195,7 +195,7 @@ public class CartServiceImpl implements CartService {
             orderRow.setQuantity(qty - 1);
             orderNowRepository.save(orderRow);
             responseDto.setMessage("Product quantity decreased");
-            responseDto.setNumOrdered(qty - 1);
+            responseDto.setNewQuantity(qty - 1);
         } else {
             // Remove the order row from the cart
             order.getOrderRows().remove(orderRow);
@@ -203,7 +203,7 @@ public class CartServiceImpl implements CartService {
             orderRepository.save(order);
 
             responseDto.setMessage("Product removed from cart");
-            responseDto.setNumOrdered(0);
+            responseDto.setNewQuantity(0);
         }
 
         return responseDto;
@@ -340,11 +340,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public GetOrderTotalsResDto getOrderTotals(Long cartId) {
+    public GetOrderTotalsResDto getOrderTotals(GetOrderTotalsReqDto dto) {
         GetOrderTotalsResDto responseDto = new GetOrderTotalsResDto();
 
         // Fetch the order (cart) by ID
-        Order order = orderRepository.findById(cartId).orElse(null);
+        Order order = orderRepository.findById(dto.getCartId()).orElse(null);
         if (order == null) {
             // Handle case if the cart is not found
             responseDto.setSubtotal(0.0);

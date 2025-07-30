@@ -1,5 +1,8 @@
+import { ProductSearchReqDto } from './../../dto/product-search-dto';
 import { Component } from '@angular/core';
-
+import { ProductDto } from '../../dto/product-dto';
+import {HttpClient} from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Component({
   standalone: false,
@@ -9,17 +12,28 @@ import { Component } from '@angular/core';
 })
 export class SearchInCataloguePage {
   searchTerm: string = '';
-  allProducts = [
-    { name: 'Grain Flour', price: '160 Lek', stock: 2 },
-    { name: 'Corn Flour', price: '100 Lek', stock: 6 },
-    { name: 'Oat Flour', price: '200 Lek', stock: 9 },
-  ];
-  filteredProducts = [...this.allProducts];
+  // array with the products to be displayed
+  filteredProducts: ProductDto[] = [];
+
+  constructor(private http: HttpClient){}
 
   onSearch() {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredProducts = this.allProducts.filter(product =>
-      product.name.toLowerCase().includes(term)
+    // TODO: complete the code
+    if (this.searchTerm == '') {
+      return;
+    }
+
+    // prepare the DTO with req parameters
+    let dto = new ProductSearchReqDto();
+    dto.searchCriterion = this.searchTerm;
+
+    // send request to the RESTful service
+    let obs : Observable<ProductDto[]> = this.http.post<ProductDto[]>
+    ("http://localhost:8080/catalogue/searchInCatalogue",
+      dto
     );
+    obs.subscribe(pa => {
+      this.filteredProducts = pa;
+    });
   }
 }

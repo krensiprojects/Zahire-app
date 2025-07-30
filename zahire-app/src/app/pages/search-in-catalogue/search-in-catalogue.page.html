@@ -15,8 +15,8 @@
   <ion-list *ngIf="filteredProducts.length > 0">
     <ion-item *ngFor="let product of filteredProducts">
       <ion-label>
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.price }} - Stock: {{ product.stock }}</p>
+        <h2>{{ product.shortDescription }}</h2>
+        <p>{{ product.price }} - Stock: {{ product.stockQty }}</p>
       </ion-label>
       <ion-button fill="clear" slot="end" color="medium">
         <ion-icon name="create-outline"></ion-icon>

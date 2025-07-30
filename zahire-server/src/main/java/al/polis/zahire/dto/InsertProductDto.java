@@ -11,6 +11,7 @@ public class InsertProductDto {
     private Integer minimumQty;
     private Integer packageSize;
     private double packageWeight;
+    private double stockQty;
 
 
 }

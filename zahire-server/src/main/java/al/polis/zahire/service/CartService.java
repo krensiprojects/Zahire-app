@@ -17,10 +17,6 @@ public interface CartService {
 
     GetOrderTotalsResDto getOrderTotals(GetOrderTotalsReqDto requestDto);
 
-    Add2CartResDto decreaseCartQty(Add2CartReqDto requestDto);
-
-    GetOrderTotalsResDto getOrderTotals(Long cartId);
-
 
 
 }
