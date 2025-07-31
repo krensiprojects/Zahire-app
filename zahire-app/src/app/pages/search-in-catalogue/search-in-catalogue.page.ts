@@ -15,7 +15,7 @@ export class SearchInCataloguePage {
   // array with the products to be displayed
   filteredProducts: ProductDto[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   onSearch() {
     // TODO: complete the code
@@ -60,7 +60,11 @@ export class SearchInCataloguePage {
       });
   }
 
-  removeProduct(productId: string){
-   console.log(productId);
+  removeProduct(productId: string) {
+    console.log("Erasing:", productId);
+
+    // invoke the RESTful service to erase a product
+    // and update the displayed list of files
+    // TODO: do it! And don't earse again!
   }
 }
