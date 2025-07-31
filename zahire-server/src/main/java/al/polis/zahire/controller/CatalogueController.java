@@ -23,12 +23,18 @@ public class CatalogueController {
     public List<ProductSearchRespDto> searchInCatalogue(@RequestBody ProductSearchReqDto searchCriterion) {
         return catalogueService.searchInCatalogue(searchCriterion);
     }
-
     // Endpoint to insert a new product
+
     @PostMapping("/insertProduct")
     public void insertProduct(@RequestBody InsertProductDto product) {
 
         catalogueService.insertNewProduct(product);
 
+    }
+
+    // Endpoint to search in the catalogue
+    @PostMapping("/searchInCatalogue")
+    public  List<ProductSearchRespDto> removeProduct(@RequestBody RemoveProductDto dto) {
+        return catalogueService.removeProduct(dto.getId());
     }
 }

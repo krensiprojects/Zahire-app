@@ -13,4 +13,7 @@ public interface CatalogueService {
     void insertNewProduct(InsertProductDto insertProductDto);
 
     double sumTwoNumbers(double a, double b);
+
+    List<ProductSearchRespDto> removeProduct(Long id);
+
 }
