@@ -29,7 +29,7 @@ public class CatalogueServiceImpl implements CatalogueService {
         // Convert the results to ProductSearchRespDto
         return products.stream()
                 .map(product ->
-                        new ProductSearchRespDto(product.getCode(), product.getDescription(),
+                        new ProductSearchRespDto(product.getId(), product.getCode(), product.getDescription(),
                                 product.getShortDescription(), product.getPrice()))
                 .collect(Collectors.toList());
     }
