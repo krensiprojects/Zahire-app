@@ -15,7 +15,7 @@ export class SearchInCataloguePage {
   // array with the products to be displayed
   filteredProducts: ProductDto[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   onSearch() {
     // TODO: complete the code
@@ -60,7 +60,11 @@ export class SearchInCataloguePage {
       });
   }
 
-  removeProduct(idProduct: string){
-   console.log(idProduct);
+  removeProduct(idProduct: string) {
+    console.log("Removing: ", idProduct);
+
+    // invoke the RESTful service
+    // and update the displayedlist of products
+    // TODO: do it!
   }
 }
