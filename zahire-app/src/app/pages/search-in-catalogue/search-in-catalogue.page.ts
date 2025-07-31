@@ -60,7 +60,7 @@ export class SearchInCataloguePage {
       });
   }
 
-  removeProduct(idProduct: string){
-   console.log(idProduct);
+  removeProduct(productId: string){
+   console.log(productId);
   }
 }

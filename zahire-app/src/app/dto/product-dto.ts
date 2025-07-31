@@ -1,5 +1,5 @@
 export class ProductDto {
-  idProduct : string= "";
+  productId: string = '';
   code: string;
   description: string;
   shortDescription: string;
@@ -10,7 +10,7 @@ export class ProductDto {
   packageWeight: number;
 
   constructor(
-    idProduct: string,
+    productId: string,
     code: string,
     description: string,
     shortDescription: string,
@@ -20,7 +20,7 @@ export class ProductDto {
     packageSize: number | null,
     packageWeight: number
   ) {
-    this.idProduct=idProduct;
+    this.productId = productId;
     this.code = code;
     this.description = description;
     this.shortDescription = shortDescription;
