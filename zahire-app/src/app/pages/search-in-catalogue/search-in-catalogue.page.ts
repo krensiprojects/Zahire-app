@@ -39,9 +39,22 @@ export class SearchInCataloguePage {
 
   addNewProduct(){
     // hardcode the product to be added
-    let p = new ProductDto(...);
+    let p = new ProductDto(
+      'GR123',               // code
+      'Grain Flour',         // description
+      'Finely milled',       // shortDescription
+      160,                   // price
+      1,                     // minimumQty
+      100,                   // stockQty
+      2,                     // packageSize
+      1.5                    // packageWeight
+    );
 
     // send to the insertProduct REST service
-    ...
-  }
+    this.http.post("http://localhost:8080/catalogue/insertProduct", p)
+  .subscribe({
+    next: () => alert('Product inserted successfully!'),
+    error: err => alert('Failed to insert product')
+  });
+}
 }

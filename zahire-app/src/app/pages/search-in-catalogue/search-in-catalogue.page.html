@@ -10,7 +10,7 @@
     <ion-button color="success" (click)="onSearch()">Search</ion-button>
   </ion-item>
 
-  <ion-button expand="block" color="warning">Add New Product</ion-button>
+  <ion-button expand="block" color="warning" (click)="addNewProduct()">Add New Product</ion-button>
 
   <ion-list *ngIf="filteredProducts.length > 0">
     <ion-item *ngFor="let product of filteredProducts">
