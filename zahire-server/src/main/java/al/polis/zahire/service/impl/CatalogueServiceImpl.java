@@ -47,4 +47,22 @@ public class CatalogueServiceImpl implements CatalogueService {
     public double sumTwoNumbers(double a, double b) {
         return a+b;
     }
+
+    @Override
+    public List<ProductSearchRespDto> removeProduct(Long id) {
+        catalogueProductRepository.deleteById(id);
+
+        // Fetch updated list
+        List<CatalogueProduct> products = catalogueProductRepository.findAll();
+
+        return products.stream()
+                .map(product -> new ProductSearchRespDto(
+                        product.getId(),              // 1st
+                        product.getCode(),            // 2nd
+                        product.getDescription(),     // 3rd
+                        product.getShortDescription(),// 4th
+                        product.getPrice()
+                ))
+                                .collect(Collectors.toList());
+    }
 }

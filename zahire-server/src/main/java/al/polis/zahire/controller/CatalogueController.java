@@ -4,6 +4,7 @@ package al.polis.zahire.controller;
 import al.polis.zahire.dto.InsertProductDto;
 import al.polis.zahire.dto.ProductSearchReqDto;
 import al.polis.zahire.dto.ProductSearchRespDto;
+import al.polis.zahire.dto.RemoveProductDto;
 import al.polis.zahire.service.CatalogueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class CatalogueController {
     }
 
     // Endpoint to search in the catalogue
-    @PostMapping("/searchInCatalogue")
+    @PostMapping("/removeProduct")
     public  List<ProductSearchRespDto> removeProduct(@RequestBody RemoveProductDto dto) {
         return catalogueService.removeProduct(dto.getId());
     }

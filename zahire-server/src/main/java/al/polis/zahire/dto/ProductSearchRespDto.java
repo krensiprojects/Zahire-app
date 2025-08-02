@@ -8,7 +8,7 @@ public class ProductSearchRespDto extends InsertProductDto {
     private Long productId;
 
     public ProductSearchRespDto (Long productId,String code, String descr, String shortDescr,
-                                 Double price){
+                                 double price){
         setProductId(productId);
         setCode(code);
         setDescription(descr);

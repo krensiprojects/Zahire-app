@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ProductDto } from '../../dto/product-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { RemoveProductDto } from '../../dto/remove-product-dto';
 @Component({
   standalone: false,
   selector: 'app-search-in-catalogue',
@@ -62,9 +62,21 @@ export class SearchInCataloguePage {
 
   removeProduct(productId: string) {
     console.log("Erasing:", productId);
-
-    // invoke the RESTful service to erase a product
-    // and update the displayed list of files
+      let dto = new RemoveProductDto(productId); // 1️⃣ Prepare the DTO to send
+  // invoke the RESTful service to erase a product
+  this.http.post<ProductDto[]>('http://localhost:8080/catalogue/removeProduct', dto)
+    .subscribe({
+       // and update the displayed list of files
+      next: (updatedProducts) => {
+        this.filteredProducts = updatedProducts; // 2️⃣ Replace old list with new list
+        alert("Product deleted successfully!");   // ✅ Notify user (optional)
+      },
+      error: (err) => {
+        console.error("Failed to delete product", err); // ❌ Error handling
+        alert("Failed to delete product.");
+      }
+    });
+    
     // TODO: do it! And don't earse again!
   }
 }
