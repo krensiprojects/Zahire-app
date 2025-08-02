@@ -62,7 +62,7 @@ export class SearchInCataloguePage {
 
   removeProduct(productId: string) {
     console.log("Erasing:", productId);
-      let dto = new RemoveProductDto(productId); // 1️⃣ Prepare the DTO to send
+      let dto = new RemoveProductDto(productId, this.searchTerm); // 1️⃣ Prepare the DTO to send
   // invoke the RESTful service to erase a product
   this.http.post<ProductDto[]>('http://localhost:8080/catalogue/removeProduct', dto)
     .subscribe({
@@ -76,7 +76,5 @@ export class SearchInCataloguePage {
         alert("Failed to delete product.");
       }
     });
-    
-    // TODO: do it! And don't earse again!
   }
 }

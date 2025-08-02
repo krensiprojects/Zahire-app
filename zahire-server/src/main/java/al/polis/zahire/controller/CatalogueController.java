@@ -24,8 +24,8 @@ public class CatalogueController {
     public List<ProductSearchRespDto> searchInCatalogue(@RequestBody ProductSearchReqDto searchCriterion) {
         return catalogueService.searchInCatalogue(searchCriterion);
     }
-    // Endpoint to insert a new product
 
+    // Endpoint to insert a new product
     @PostMapping("/insertProduct")
     public void insertProduct(@RequestBody InsertProductDto product) {
 
@@ -33,9 +33,9 @@ public class CatalogueController {
 
     }
 
-    // Endpoint to search in the catalogue
+    // Endpoint to erase a product from the catalogue
     @PostMapping("/removeProduct")
     public  List<ProductSearchRespDto> removeProduct(@RequestBody RemoveProductDto dto) {
-        return catalogueService.removeProduct(dto.getId());
+        return catalogueService.removeProduct(dto);
     }
 }

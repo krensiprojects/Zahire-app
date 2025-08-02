@@ -3,6 +3,7 @@ package al.polis.zahire.service.impl;
 import al.polis.zahire.dto.InsertProductDto;
 import al.polis.zahire.dto.ProductSearchReqDto;
 import al.polis.zahire.dto.ProductSearchRespDto;
+import al.polis.zahire.dto.RemoveProductDto;
 import al.polis.zahire.mapper.CatalogProductMapper;
 import al.polis.zahire.model.CatalogueProduct;
 import al.polis.zahire.repository.CatalogueProductRepository;
@@ -49,20 +50,13 @@ public class CatalogueServiceImpl implements CatalogueService {
     }
 
     @Override
-    public List<ProductSearchRespDto> removeProduct(Long id) {
-        catalogueProductRepository.deleteById(id);
+    public List<ProductSearchRespDto> removeProduct(RemoveProductDto dto) {
+        catalogueProductRepository.deleteById(dto.getId());
 
-        // Fetch updated list
-        List<CatalogueProduct> products = catalogueProductRepository.findAll();
+        // applies again the search filter and returns results
+        ProductSearchReqDto search = new ProductSearchReqDto();
+        search.setSearchCriterion(dto.getSearchCriterion());
 
-        return products.stream()
-                .map(product -> new ProductSearchRespDto(
-                        product.getId(),              // 1st
-                        product.getCode(),            // 2nd
-                        product.getDescription(),     // 3rd
-                        product.getShortDescription(),// 4th
-                        product.getPrice()
-                ))
-                                .collect(Collectors.toList());
+        return searchInCatalogue(search);
     }
 }
