@@ -3,22 +3,22 @@ export class ProductDto {
   code: string;
   description: string;
   shortDescription: string;
-  price: number;
+  price: number | null;
   minimumQty: number | null;
-  stockQty: number;
+  stockQty: number | null;
   packageSize: number | null;
-  packageWeight: number;
+  packageWeight: number | null;
 
   constructor(
     productId: string,
     code: string,
     description: string,
     shortDescription: string,
-    price: number,
+    price: number | null,
     minimumQty: number | null,
-    stockQty: number,
+    stockQty: number | null,
     packageSize: number | null,
-    packageWeight: number
+    packageWeight: number | null
   ) {
     this.productId = productId;
     this.code = code;
