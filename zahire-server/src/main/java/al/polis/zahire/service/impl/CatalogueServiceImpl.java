@@ -1,15 +1,13 @@
 package al.polis.zahire.service.impl;
 
-import al.polis.zahire.dto.InsertProductDto;
-import al.polis.zahire.dto.ProductSearchReqDto;
-import al.polis.zahire.dto.ProductSearchRespDto;
-import al.polis.zahire.dto.RemoveProductDto;
+import al.polis.zahire.dto.*;
 import al.polis.zahire.mapper.CatalogProductMapper;
 import al.polis.zahire.model.CatalogueProduct;
 import al.polis.zahire.repository.CatalogueProductRepository;
 import al.polis.zahire.service.CatalogueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,4 +57,42 @@ public class CatalogueServiceImpl implements CatalogueService {
 
         return searchInCatalogue(search);
     }
+
+    @Override
+    @Transactional
+    public ProductSearchRespDto updateProduct(UpdateProductDto dto) {
+        CatalogueProduct p = catalogueProductRepository.findById(dto.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found: " + dto.getProductId()));
+
+        // Editable fields
+        p.setCode(dto.getCode());
+        p.setDescription(dto.getDescription());
+        p.setShortDescription(dto.getShortDescription());
+        p.setPrice(dto.getPrice());
+        p.setMinimumQty(dto.getMinimumQty());
+        p.setPackageSize(dto.getPackageSize());
+        p.setPackageWeight(dto.getPackageWeight());
+        p.setStockQuantity(dto.getStockQty());
+
+        CatalogueProduct saved = catalogueProductRepository.save(p);
+
+        // Map back to the response you already use in search results
+        ProductSearchRespDto resp = getProductSearchRespDto(saved);
+        return resp;
+    }
+
+    private static ProductSearchRespDto getProductSearchRespDto(CatalogueProduct saved) {
+        ProductSearchRespDto resp = new ProductSearchRespDto();
+        resp.setProductId(saved.getId());
+        resp.setCode(saved.getCode());
+        resp.setDescription(saved.getDescription());
+        resp.setShortDescription(saved.getShortDescription());
+        resp.setPrice(saved.getPrice());
+        resp.setMinimumQty(saved.getMinimumQty());
+        resp.setPackageSize(saved.getPackageSize());
+        resp.setPackageWeight(saved.getPackageWeight());
+        resp.setStockQty(saved.getStockQuantity());
+        return resp;
+    }
+
 }

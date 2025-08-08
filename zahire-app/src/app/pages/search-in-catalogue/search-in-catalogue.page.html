@@ -48,7 +48,7 @@
         <h2>{{ product.shortDescription }}</h2>
         <p>{{ product.price }} - Stock: {{ product.stockQty }}</p>
       </ion-label>
-      <ion-button fill="clear" slot="end" color="medium">
+      <ion-button fill="clear" slot="end" color="medium"(click)="startEdit(product)">
         <ion-icon name="create-outline"></ion-icon>
       </ion-button>
       <ion-button fill="clear" slot="end" color="danger" (click)="removeProduct(product.productId)">
