@@ -1,6 +1,7 @@
 package al.polis.zahire.controller;
 
-
+import al.polis.zahire.dto.UpdateProductDto;
+import al.polis.zahire.dto.ProductSearchRespDto;
 import al.polis.zahire.dto.InsertProductDto;
 import al.polis.zahire.dto.ProductSearchReqDto;
 import al.polis.zahire.dto.ProductSearchRespDto;
@@ -38,4 +39,10 @@ public class CatalogueController {
     public  List<ProductSearchRespDto> removeProduct(@RequestBody RemoveProductDto dto) {
         return catalogueService.removeProduct(dto);
     }
+
+    @PutMapping("/updateProduct")
+    public ProductSearchRespDto updateProduct(@RequestBody UpdateProductDto dto) {
+        return catalogueService.updateProduct(dto);
+    }
+
 }

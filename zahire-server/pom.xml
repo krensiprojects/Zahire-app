@@ -45,6 +45,7 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<version>8.3.0</version> <!-- ✅ Add this line -->
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

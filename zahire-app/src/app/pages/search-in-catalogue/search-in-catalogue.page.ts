@@ -4,6 +4,7 @@ import { ProductDto } from '../../dto/product-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RemoveProductDto } from '../../dto/remove-product-dto';
+
 @Component({
   standalone: false,
   selector: 'app-search-in-catalogue',
@@ -11,28 +12,34 @@ import { RemoveProductDto } from '../../dto/remove-product-dto';
   styleUrls: ['./search-in-catalogue.page.scss'],
 })
 export class SearchInCataloguePage {
-  newProduct: ProductDto = new ProductDto(
-  '', '', '', '', null, null, null, null, null
-);
+  // Base API path
+  private apiBase = 'http://localhost:8080/catalogue';
+
+  // Form model
+  newProduct: ProductDto = new ProductDto('', '', '', '', null, null, null, null, null);
+
+  // Search + list
   searchTerm: string = '';
-  // array with the products to be displayed
   filteredProducts: ProductDto[] = [];
+
+  // Edit state
+  isEditMode: boolean = false;
 
   constructor(private http: HttpClient) { }
 
+  // ========================
+  // SEARCH
+  // ========================
   onSearch() {
-    // TODO: complete the code
-    if (this.searchTerm == '') {
+    if (this.searchTerm.trim() === '') {
       return;
     }
 
-    // prepare the DTO with req parameters
     let dto = new ProductSearchReqDto();
     dto.searchCriterion = this.searchTerm;
 
-    // send request to the RESTful service
     let obs: Observable<ProductDto[]> = this.http.post<ProductDto[]>(
-      'http://localhost:8080/catalogue/searchInCatalogue',
+      `${this.apiBase}/searchInCatalogue`,
       dto
     );
     obs.subscribe((pa) => {
@@ -40,51 +47,127 @@ export class SearchInCataloguePage {
     });
   }
 
+  // ========================
+  // ADD NEW PRODUCT
+  // ========================
   addNewProduct() {
-  const product = this.newProduct;
+    const product = this.newProduct;
 
-  this.http
-    .post('http://localhost:8080/catalogue/insertProduct', product)
-    .subscribe({
+    this.http
+      .post(`${this.apiBase}/insertProduct`, product)
+      .subscribe({
+        next: () => {
+          alert('Product inserted successfully!');
+          this.resetForm();
+          this.refreshAfterChange(product.shortDescription);
+        },
+        error: () => alert('Failed to insert product'),
+      });
+  }
+
+  // ========================
+  // START EDIT MODE
+  // ========================
+  startEdit(product: ProductDto) {
+    this.isEditMode = true;
+
+    // Populate form with selected product
+    (this.newProduct as any).productId    = (product as any).productId ?? null;
+    this.newProduct.code                  = product.code ?? '';
+    this.newProduct.description           = product.description ?? '';
+    this.newProduct.shortDescription      = product.shortDescription ?? '';
+    this.newProduct.price                 = Number(product.price ?? 0);
+    this.newProduct.minimumQty            = Number(product.minimumQty ?? 0);
+    this.newProduct.stockQty              = Number(product.stockQty ?? 0);
+    this.newProduct.packageSize           = Number(product.packageSize ?? 0);
+    this.newProduct.packageWeight         = Number(product.packageWeight ?? 0);
+  }
+
+  // ========================
+  // CONFIRM EDIT
+  // ========================
+  confirmEdit() {
+    const productId = (this.newProduct as any).productId;
+    if (!productId) {
+      alert('Missing productId for update.');
+      return;
+    }
+
+    const dto = {
+      productId: productId,
+      code: this.newProduct.code,
+      description: this.newProduct.description,
+      shortDescription: this.newProduct.shortDescription,
+      price: Number(this.newProduct.price),
+      minimumQty: Number(this.newProduct.minimumQty),
+      stockQty: Number(this.newProduct.stockQty),
+      packageSize: Number(this.newProduct.packageSize),
+      packageWeight: Number(this.newProduct.packageWeight),
+    };
+
+    this.http.put(`${this.apiBase}/updateProduct`, dto).subscribe({
       next: () => {
-        alert('Product inserted successfully!');
-        // Clear the form after success
-        this.newProduct = new ProductDto('', '', '', '', null, null, null, null, null);
-        // Refresh search results
-        if (this.searchTerm.trim() === '') {
-          // Option 1: Use the shortDescription as a new temporary search
-          const tempSearch = new ProductSearchReqDto();
-          tempSearch.searchCriterion = product.shortDescription;
-          this.http.post<ProductDto[]>(
-            'http://localhost:8080/catalogue/searchInCatalogue',
-            tempSearch
-          ).subscribe(results => {
-            this.filteredProducts = results;
-          });
-        } else {
-          // Option 2: Search with current search term
-          this.onSearch();
-        }
-      },
-      error: (err) => alert('Failed to insert product'),
-    });
-}
-
-  removeProduct(productId: string) {
-    console.log("Erasing:", productId);
-      let dto = new RemoveProductDto(productId, this.searchTerm); // 1️⃣ Prepare the DTO to send
-  // invoke the RESTful service to erase a product
-  this.http.post<ProductDto[]>('http://localhost:8080/catalogue/removeProduct', dto)
-    .subscribe({
-       // and update the displayed list of files
-      next: (updatedProducts) => {
-        this.filteredProducts = updatedProducts; // 2️⃣ Replace old list with new list
-        alert("Product deleted successfully!");   // ✅ Notify user (optional)
+        alert('Product updated!');
+        this.refreshAfterChange(this.searchTerm);
+        this.exitEditMode();
       },
       error: (err) => {
-        console.error("Failed to delete product", err); // ❌ Error handling
-        alert("Failed to delete product.");
+        console.error(err);
+        alert('Failed to update product.');
       }
     });
+  }
+
+  // ========================
+  // CANCEL EDIT
+  // ========================
+  cancelEdit() {
+    this.exitEditMode();
+  }
+
+  // ========================
+  // REMOVE PRODUCT
+  // ========================
+  removeProduct(productId: string) {
+    console.log("Erasing:", productId);
+    let dto = new RemoveProductDto(productId, this.searchTerm);
+
+    this.http.post<ProductDto[]>(`${this.apiBase}/removeProduct`, dto)
+      .subscribe({
+        next: (updatedProducts) => {
+          this.filteredProducts = updatedProducts;
+          alert("Product deleted successfully!");
+        },
+        error: (err) => {
+          console.error("Failed to delete product", err);
+          alert("Failed to delete product.");
+        }
+      });
+  }
+
+  // ========================
+  // HELPERS
+  // ========================
+  private resetForm() {
+    this.newProduct = new ProductDto('', '', '', '', null, null, null, null, null);
+    (this.newProduct as any).productId = null;
+  }
+
+  private exitEditMode() {
+    this.isEditMode = false;
+    this.resetForm();
+  }
+
+  private refreshAfterChange(fallbackSearch: string) {
+    if (this.searchTerm.trim()) {
+      this.onSearch();
+    } else if (fallbackSearch?.trim()) {
+      const tempSearch = new ProductSearchReqDto();
+      tempSearch.searchCriterion = fallbackSearch;
+      this.http.post<ProductDto[]>(`${this.apiBase}/searchInCatalogue`, tempSearch)
+        .subscribe(results => {
+          this.filteredProducts = results;
+        });
+    }
   }
 }

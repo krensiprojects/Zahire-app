@@ -1,5 +1,6 @@
 package al.polis.zahire.service;
 
+import al.polis.zahire.dto.UpdateProductDto;
 import al.polis.zahire.dto.InsertProductDto;
 import al.polis.zahire.dto.ProductSearchReqDto;
 import al.polis.zahire.dto.ProductSearchRespDto;
@@ -16,5 +17,7 @@ public interface CatalogueService {
     double sumTwoNumbers(double a, double b);
 
     List<ProductSearchRespDto> removeProduct(RemoveProductDto dto);
+
+    ProductSearchRespDto updateProduct(UpdateProductDto dto);
 
 }

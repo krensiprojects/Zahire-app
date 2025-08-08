@@ -32,7 +32,7 @@ public class CatalogueProduct {
     private String subCategory;
 
     private String dimension;
-    private Integer stockQuantity; // Number of available items
+    private Double stockQuantity; // Number of available items
 
     private String imageUrl; // URL of product image
     private String videoUrl; // URL of product video (if applicable)
