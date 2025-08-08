@@ -83,17 +83,18 @@ export class SearchInCataloguePage {
   // ========================
   startEdit(product: ProductDto) {
     this.isEditMode = true;
+    this.showProductForm = true;
 
     // Populate form with selected product
-    (this.newProduct as any).productId    = (product as any).productId ?? null;
-    this.newProduct.code                  = product.code ?? '';
-    this.newProduct.description           = product.description ?? '';
-    this.newProduct.shortDescription      = product.shortDescription ?? '';
-    this.newProduct.price                 = Number(product.price ?? 0);
-    this.newProduct.minimumQty            = Number(product.minimumQty ?? 0);
-    this.newProduct.stockQty              = Number(product.stockQty ?? 0);
-    this.newProduct.packageSize           = Number(product.packageSize ?? 0);
-    this.newProduct.packageWeight         = Number(product.packageWeight ?? 0);
+    (this.newProduct as any).productId = (product as any).productId ?? null;
+    this.newProduct.code = product.code ?? '';
+    this.newProduct.description = product.description ?? '';
+    this.newProduct.shortDescription = product.shortDescription ?? '';
+    this.newProduct.price = Number(product.price ?? 0);
+    this.newProduct.minimumQty = Number(product.minimumQty ?? 0);
+    this.newProduct.stockQty = Number(product.stockQty ?? 0);
+    this.newProduct.packageSize = Number(product.packageSize ?? 0);
+    this.newProduct.packageWeight = Number(product.packageWeight ?? 0);
   }
 
   // ========================
@@ -182,5 +183,25 @@ export class SearchInCataloguePage {
           this.filteredProducts = results;
         });
     }
+  }
+
+  confirmProduct() {
+    if (this.isEditMode) {
+      this.confirmEdit();
+    } else {
+      this.confirmAddNewProduct();
+    }
+    this.isEditMode = false;
+    this.showProductForm = false;
+  }
+
+  cancelProduct() {
+    if (this.isEditMode) {
+      this.cancelEdit();
+    } else {
+      this.cancelAddNewProduct();
+    }
+    this.isEditMode = false;
+    this.showProductForm = false;
   }
 }
